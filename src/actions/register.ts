@@ -33,7 +33,7 @@ export async function registerUser(formData: IFormData) {
       }
     });
 
-    return user;
+    return { success: true, user: { id: user.id, email: user.email } };
   } catch (error) {
     console.error("Fehler bei der Registrierung:", error);
     return { error: "Fehler bei der Registrierung" };
