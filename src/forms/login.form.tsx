@@ -13,14 +13,23 @@ const LoginForm = ({ onClose }: IProps) => {
     email: "",
     password: ""
   });
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
 
-    await signInWithCredentials(formData.email, formData.password);
+    const result = await signInWithCredentials(
+      formData.email,
+      formData.password
+    );
+
+    if (result.error) {
+      setError(result.error);
+      return;
+    }
 
     window.location.reload();
-
     onClose();
   };
 
@@ -59,6 +68,10 @@ const LoginForm = ({ onClose }: IProps) => {
           return null;
         }}
       />
+
+      {error && (
+        <p className="text-danger text-sm w-full">{error}</p>
+      )}
 
       <div className="flex w-[100%]  gap-4 items-center pt-8 justify-end">
         <Button variant="light" onPress={onClose}>
