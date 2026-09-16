@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/utils/prisma";
+import { revalidatePath } from "next/cache";
 
 export async function getRecipes() {
   try {
@@ -64,6 +65,7 @@ export async function createRecipe(formData: FormData) {
       }
     });
 
+    revalidatePath("/");
     return { success: true, recipe };
   } catch (error) {
     console.error("Error creating recipe:", error);
@@ -115,6 +117,7 @@ export async function updateRecipe(id: string, formData: FormData) {
       }
     });
 
+    revalidatePath("/");
     return { success: true, recipe };
   } catch (error) {
     console.error("Error updating recipe:", error);
@@ -132,6 +135,7 @@ export async function deleteRecipe(id: string) {
       where: { id }
     });
 
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error("Error deleting recipe:", error);
