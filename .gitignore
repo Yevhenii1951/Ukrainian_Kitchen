@@ -40,6 +40,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# persönliche Notizen (nicht pushen)
+PERSO_CHANGES.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
