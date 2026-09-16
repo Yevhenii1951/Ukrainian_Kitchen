@@ -1,6 +1,6 @@
 # Borschtsch & Pampuschky 🇺🇦
 
-![Borschtsch & Pampuschky – Startseite](public/1borsch.jpg)
+![Borschtsch & Pampuschky – Startseite](public/Screenshot%20from%202026-09-16%2020-49-38.png)
 
 > Eine Web-App für Rezepte der ukrainischen Küche. Gebaut als Fullstack-Lernprojekt: Server Actions, Middleware, Client-State, Auth, Prisma, Supabase und Cloud-Deployment.
 
@@ -24,9 +24,8 @@
 
 | Seite | Bild |
 |-------|------|
-| Startseite (Rezeptliste) | `![Startseite](/public/1borsch.jpg)` |
-| Rezeptkarte | `![Rezeptkarte](/public/pampushki1.jpg)` |
-| Fehlerseite | `![Fehlerseite](/public/screenshot.png)` *(noch hinzufügen)* |
+| Startseite (Rezeptliste) | `![Startseite](/public/Screenshot%20from%202026-09-16%2020-49-38.png)` |
+| Details / Komponenten | `![Details](/public/Screenshot%20from%202026-09-16%2020-50-08.png)` |
 
 ---
 
