@@ -28,7 +28,10 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: siteConfig.title,
-  description: siteConfig.description
+  description: siteConfig.description,
+  icons: {
+    icon: "/logo.png"
+  }
 };
 
 export default async function RootLayout({
