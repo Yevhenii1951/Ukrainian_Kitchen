@@ -68,10 +68,15 @@ export default function Header() {
   return (
     <Navbar style={{ height: layoutConfig.headerHeight }}>
       <NavbarBrand>
-        <Link href="/" className="flex gap-1 items-center">
-          <p className="font-serif text-xl font-bold text-borsch">
+        <Link href="/" className="flex items-center gap-2">
+          <img
+            src="/logo.png"
+            alt="Borschtsch & Pampuschky"
+            className="h-10 w-auto object-contain"
+          />
+          <span className="font-serif text-lg font-bold text-borsch hidden md:inline">
             {siteConfig.title}
-          </p>
+          </span>
         </Link>
       </NavbarBrand>
 
