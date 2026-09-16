@@ -2,11 +2,11 @@
 
 ## Intent
 
-Replicate the Tatar Kitchen recipe-management learning project (Next.js 15
-App Router, HeroUI, Tailwind v4, Prisma, Postgres, NextAuth v5 Credentials,
-Zustand, Zod) as a faithful 1:1 reproduction, re-themed to Ukrainian
-cuisine with a German-language UI. The learning goal is the full-stack
-canon, identical to the reference; only the content/theme differs.
+A full-stack recipe-management learning project (Next.js 15 App Router,
+HeroUI, Tailwind v4, Prisma, Postgres, NextAuth v5 Credentials,
+Zustand, Zod) themed to Ukrainian cuisine with a German-language UI.
+The learning goal is the full-stack canon; the project is built from
+scratch as an original application.
 
 ## Users
 
@@ -68,7 +68,7 @@ canon, identical to the reference; only the content/theme differs.
 ### UX Acceptance Criteria
 
 - UX1: German UI text everywhere (header, buttons, modals, forms, errors,
-  static content). No stock Russian or Tatar references.
+  static content). No stock Russian references.
 - UX2: The About page covers real Ukrainian dishes (Borschtsch, Deruny,
   Holubtsi, Pampuschky, Kotelett nach Kiew) with their real photos from
   `public/`.
@@ -84,10 +84,10 @@ canon, identical to the reference; only the content/theme differs.
 ## Non-Goals
 
 - NG1: Prices on dishes, cart or checkout (recipe has no price; only
-  ingredients have an optional pricePerUnit, as in the reference).
-- NG2: Passwordless / demo access codes (Credentials only, as reference).
+  ingredients have an optional pricePerUnit).
+- NG2: Passwordless / demo access codes (Credentials only).
 - NG3: Multi-language UI (single language: German).
-- NG4: Image upload (remote image URLs only, as in the reference).
+- NG4: Image upload (remote image URLs only).
 - NG5: Roles/permissions (any authenticated user can CRUD).
 - NG6: Deployment; local-only learning project.
 

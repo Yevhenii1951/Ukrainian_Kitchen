@@ -1,6 +1,6 @@
 # 04: Recipe CRUD + home list behind auth (implements FR-1, FR-8, FR-10)
 
-**What to build:** End-to-end recipe management as in the reference: a
+**What to build:** End-to-end recipe management: a
 protected `/recipes/new` create page with a form (name, description, image
 URL, ingredient select with quantity) and Zod validation; a recipe detail
 page `/recipes/[id]` rendering description, image and ingredient table;

@@ -1,15 +1,15 @@
 # Architecture — Ukrainian Kitchen
 
-Faithful reproduction of the Tatar Kitchen reference. Folder structure,
-components, data flow and Prisma schema mirror the reference 1:1; only the
-content/theme is Ukrainian/German.
+Next.js 15 (App Router) recipe platform. Folder structure,
+components, data flow and Prisma schema are organized for clarity and
+maintainability; content/theme is Ukrainian/German.
 
 ## Folder Structure
 
 ```
 Ukrainian_Kitchen/
 ├── prisma/
-│   └── schema.prisma            # DB models (as reference)
+│   └── schema.prisma            # DB models
 ├── public/
 │   ├── *.jpg                    # Dish photos, hero
 │   └── logo.png
@@ -74,7 +74,7 @@ Ukrainian_Kitchen/
 
 ## Database Schema (Prisma)
 
-Identical models/enums to the reference:
+Models/enums used by the app:
 
 - **User**: id (uuid), email (unique), password (hashed), timestamps
 - **Account / Session / VerificationToken**: NextAuth adapter tables
