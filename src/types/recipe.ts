@@ -12,5 +12,7 @@ export interface IRecipe {
   name: string;
   description: string;
   imageUrl?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
   ingredients: IRecipeIngredient[];
 }

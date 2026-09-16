@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 export async function getRecipes() {
   try {
     const recipes = await prisma.recipe.findMany({
+      orderBy: { createdAt: "desc" },
       include: {
         ingredients: {
           include: {
