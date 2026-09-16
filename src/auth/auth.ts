@@ -1,7 +1,6 @@
 import bcryptjs from "bcryptjs";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
-import { ZodError } from "zod";
 import Credentials from "next-auth/providers/credentials";
 import { signInSchema } from "@/schema/zod";
 import { getUserFromDb } from "@/utils/user";
@@ -17,38 +16,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" }
       },
       authorize: async (credentials) => {
-        try {
-          if (!credentials?.email || !credentials?.password) {
-            throw new Error("E-Mail und Passwort sind erforderlich");
-          }
-
-          const { email, password } = await signInSchema.parseAsync(
-            credentials
-          );
-
-          const user = await getUserFromDb(email);
-
-          if (!user || !user.password) {
-            throw new Error("Ungültige Eingabedaten");
-          }
-
-          const isPasswordValid = await bcryptjs.compare(
-            password,
-            user.password
-          );
-
-          if (!isPasswordValid) {
-            throw new Error("Ungültige Eingabedaten");
-          }
-
-          return { id: user.id, email: user.email };
-        } catch (error) {
-          if (error instanceof ZodError) {
-            // Return `null` to indicate that the credentials are invalid
-            return null;
-          }
-          return null;
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("E-Mail und Passwort sind erforderlich");
         }
+
+        const { email, password } = await signInSchema.parseAsync(
+          credentials
+        );
+
+        const user = await getUserFromDb(email);
+
+        if (!user || !user.password) {
+          throw new Error("E-Mail oder Passwort ist ungültig");
+        }
+
+        const isPasswordValid = await bcryptjs.compare(
+          password,
+          user.password
+        );
+
+        if (!isPasswordValid) {
+          throw new Error("E-Mail oder Passwort ist ungültig");
+        }
+
+        return { id: user.id, email: user.email };
       }
     })
   ],
