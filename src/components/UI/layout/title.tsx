@@ -13,8 +13,11 @@ const Title = () => {
   const pageTitle = currentNavItem ? currentNavItem.label : siteConfig.title;
 
   return (
-    <div className="w-full flex justify-center my-6">
-      <h1 className="text-3xl font-bold">{pageTitle}</h1>
+    <div className="w-full flex flex-col items-center my-8">
+      <h1 className="font-serif text-4xl font-bold tracking-tight">
+        {pageTitle}
+      </h1>
+      <div className="mt-3 h-0.5 w-16 rounded-full bg-gradient-to-r from-borsch via-sunflower to-dill" />
     </div>
   );
 };

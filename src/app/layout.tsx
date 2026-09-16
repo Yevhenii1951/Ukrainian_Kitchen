@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/UI/layout/header";
 import { Providers } from "@/providers/provider";
@@ -20,6 +20,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"]
 });
 
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["600", "700"]
+});
+
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description
@@ -33,9 +39,9 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en">
+    <html lang="de">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
         <Providers>
           <SessionProvider session={session}>
@@ -52,10 +58,12 @@ export default async function RootLayout({
                 </div>
 
                 <footer
-                  className={`w-full flex items-center justify-center py-3`}
+                  className={`w-full flex items-center justify-center py-6 border-t border-border-soft`}
                   style={{ height: layoutConfig.footerHeight }}
                 >
-                  <p>{siteConfig.description}</p>
+                  <p className="text-sm text-muted">
+                    {siteConfig.description}
+                  </p>
                 </footer>
               </div>
             </AppLoader>
