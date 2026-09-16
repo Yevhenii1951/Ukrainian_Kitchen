@@ -8,6 +8,7 @@
     "start": "next start",
     "check": "npm run lint && tsc --noEmit",
     "lint": "next lint",
+    "db:seed": "tsx prisma/seed.ts",
     "postinstall": "prisma generate"
   },
   "dependencies": {
