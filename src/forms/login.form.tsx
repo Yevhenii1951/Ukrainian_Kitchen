@@ -4,20 +4,16 @@ import { signInWithCredentials } from "@/actions/sign-in";
 import { Button, Form, Input } from "@heroui/react";
 import { useState } from "react";
 
-interface IProps {
-  onClose: () => void;
-}
-
-const LoginForm = ({ onClose }: IProps) => {
+const LoginForm = ({ onClose }: { onClose: () => void }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
+    setError(null);
 
     const result = await signInWithCredentials(
       formData.email,
@@ -35,6 +31,7 @@ const LoginForm = ({ onClose }: IProps) => {
 
   return (
     <Form className="w-full" onSubmit={handleSubmit}>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <Input
         aria-label="Email"
         isRequired
@@ -68,10 +65,6 @@ const LoginForm = ({ onClose }: IProps) => {
           return null;
         }}
       />
-
-      {error && (
-        <p className="text-danger text-sm w-full">{error}</p>
-      )}
 
       <div className="flex w-[100%]  gap-4 items-center pt-8 justify-end">
         <Button variant="light" onPress={onClose}>

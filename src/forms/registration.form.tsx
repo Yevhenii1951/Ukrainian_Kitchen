@@ -14,6 +14,7 @@ const RegistrationForm = ({ onClose }: IProps) => {
     password: "",
     confirmPassword: ""
   });
+  const [error, setError] = useState<string | null>(null);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,13 +23,21 @@ const RegistrationForm = ({ onClose }: IProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await registerUser(formData);
+    setError(null);
+
+    const result = await registerUser(formData);
+
+    if ("error" in result) {
+      setError(result.error);
+      return;
+    }
 
     onClose();
   };
 
   return (
     <Form className="w-full" onSubmit={handleSubmit}>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <Input
         aria-label="Email"
         isRequired
