@@ -1,22 +1,21 @@
-"use client";
-
 import { Button } from "@heroui/react";
 import Link from "next/link";
 
-const NotFoundPage = () => {
+export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center ">
-      <div className="text-8xl font-bold text-gray-300">404</div>
-
-      <h1 className="text-3xl font-bold tracking-tight">Seite nicht gefunden</h1>
-
-      <div className="pt-6">
-        <Button as={Link} color="primary" variant="shadow" href="/">
-          Zurück zur Startseite
-        </Button>
+    <div className="flex flex-col justify-center items-center gap-5 py-20">
+      <div className="text-center">
+        <p className="font-serif text-5xl font-bold text-borsch">404</p>
+        <p className="mt-2 text-muted">Diese Seite konnte nicht gefunden werden.</p>
       </div>
+      <Button
+        as={Link}
+        color="primary"
+        href="/"
+        className="mt-2"
+      >
+        Zurück zur Startseite
+      </Button>
     </div>
   );
-};
-
-export default NotFoundPage;
+}

@@ -51,13 +51,12 @@ export default function Header() {
             <Link
               color="foreground"
               href={item.href}
-              className={`px-3 py-1 
-              ${isActive ? "text-blue-500" : "text-foreground"} 
-              hover:text-blue-300 hover:border
-              hover:border-blue-300 hover:rounded-md
-              transition-colors
-              transition-border
-              duration-200`}
+              className={`relative px-3 py-1 text-sm transition-colors duration-200
+              ${
+                isActive
+                  ? "text-borsch font-medium after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-borsch"
+                  : "text-foreground hover:text-borsch"
+              }`}
             >
               {item.label}
             </Link>
@@ -70,19 +69,25 @@ export default function Header() {
     <Navbar style={{ height: layoutConfig.headerHeight }}>
       <NavbarBrand>
         <Link href="/" className="flex gap-1 items-center">
-          <p className="font-bold text-inherit">{siteConfig.title}</p>
+          <p className="font-serif text-xl font-bold text-borsch">
+            {siteConfig.title}
+          </p>
         </Link>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-1" justify="center">
         {getNavItems()}
       </NavbarContent>
 
       <NavbarContent justify="end">
-        {isAuth && <p>Hallo, {session?.user?.email}!</p>}
+        {isAuth && (
+          <p className="hidden md:block text-sm text-muted">
+            Hallo, {session?.user?.email}!
+          </p>
+        )}
 
         {status === "loading" ? (
-          <p>Wird geladen...</p>
+          <p className="text-sm text-muted">Wird geladen...</p>
         ) : !isAuth ? (
           <>
             <NavbarItem>
@@ -101,7 +106,6 @@ export default function Header() {
                 as={Link}
                 color="primary"
                 href="#"
-                variant="flat"
                 onPress={() => setIsRegistrationOpen(true)}
               >
                 Registrieren

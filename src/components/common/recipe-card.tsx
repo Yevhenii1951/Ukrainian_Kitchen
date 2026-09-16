@@ -36,34 +36,38 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
   };
 
   return (
-    <Card className="w-full min-w-[254px] max-w-md h-[480px] flex flex-col">
-      <div className="h-48 overflow-hidden">
+    <Card className="w-full min-w-[254px] max-w-md flex flex-col overflow-hidden border border-border-soft bg-card shadow-none transition-shadow duration-300 hover:shadow-lg">
+      <div className="h-44 overflow-hidden">
         {recipe.imageUrl ? (
-          <div className="relative h-48 group overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:shadow-lg">
+          <div className="relative h-44 group overflow-hidden bg-borsch-soft">
             <Image
               src={recipe.imageUrl}
               alt="Image for recipe"
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         ) : (
-          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-500">Kein Bild</span>
+          <div className="w-full h-full bg-borsch-soft flex items-center justify-center">
+            <span className="text-borsch/70 italic">Kein Bild</span>
           </div>
         )}
       </div>
 
-      <CardHeader className="flex justify-between items-center text-black">
-        <h2 className="text-xl font-bold">{recipe.name}</h2>
+      <CardHeader className="flex justify-between items-center px-5 pt-4 pb-1">
+        <h2 className="font-serif text-xl font-bold text-borsch">
+          {recipe.name}
+        </h2>
       </CardHeader>
 
-      <CardBody className="flex-1 text-black">
-        <p className="text-gray-600 line-clamp-6">
+      <CardBody className="flex-1 px-5 py-2">
+        <p className="text-foreground/70 line-clamp-4 text-sm">
           {recipe.description || "Ohne Beschreibung"}
         </p>
-        <h3 className="mt-4 font-semibold">Zutaten:</h3>
-        <ul className="list-disc pl-5 overflow-y-auto max-h-24">
+        <h3 className="mt-4 text-sm font-semibold uppercase tracking-wide text-muted">
+          Zutaten
+        </h3>
+        <ul className="list-disc pl-5 overflow-y-auto max-h-24 text-sm text-foreground/80">
           {recipe.ingredients.map((ing) => (
             <li key={ing.id}>
               {ing.ingredient.name}: {ing.quantity}{" "}
@@ -74,7 +78,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
       </CardBody>
 
       {isAuth && (
-        <div className="flex justify-end gap-2 p-4">
+        <div className="flex justify-end gap-2 px-5 py-3">
           <Link href={`/recipes/${recipe.id}`}>
             <Button color="primary" variant="light">
               Bearbeiten
