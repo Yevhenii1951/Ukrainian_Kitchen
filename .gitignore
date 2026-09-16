@@ -43,6 +43,9 @@ yarn-error.log*
 # persönliche Notizen (nicht pushen)
 PERSO_CHANGES.md
 
+# interne SDD-Dokumente (nicht pushen)
+docs/sdd/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
