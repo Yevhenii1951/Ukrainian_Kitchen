@@ -1,12 +1,12 @@
-"use client";
-
 import RecipeCard from "@/components/common/recipe-card";
-import { useRecipeStore } from "@/store/recipe.store";
+import { getRecipes } from "@/actions/recipe";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 
-export default function Home() {
-  const { recipes, isLoading, error } = useRecipeStore();
+export const revalidate = 60;
+
+export default async function Home() {
+  const result = await getRecipes();
 
   return (
     <>
@@ -16,12 +16,12 @@ export default function Home() {
         </Link>
       </div>
 
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-
-      {isLoading && <p>Wird geladen...</p>}
+      {result.success === false && (
+        <p className="text-red-500 mb-4">{result.error}</p>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {recipes.map((recipe) => (
+        {result.recipes?.map((recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </div>
