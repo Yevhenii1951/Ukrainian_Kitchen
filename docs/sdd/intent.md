@@ -2,8 +2,7 @@
 
 ## What
 
-A learning project replicating the Tatar Kitchen recipe-management app,
-re-themed as a Ukrainian cuisine recipe platform with a German-language UI.
+A learning project: a Ukrainian cuisine recipe platform with a German-language UI.
 
 - **Stack**: Next.js 15 (App Router), Tailwind CSS v4, HeroUI, Prisma,
   PostgreSQL (Supabase hosted), NextAuth v5 (Credentials), Zustand,
@@ -17,9 +16,9 @@ re-themed as a Ukrainian cuisine recipe platform with a German-language UI.
 ## Why
 
 Build fluency with the full-stack canon (SSG + React islands, client state,
-server actions, Prisma/Postgres, auth, forms, Zod validation) by reproducing
-a known working project under a different theme. The German UI doubles as
-portfolio material for the Kassel job market.
+server actions, Prisma/Postgres, auth, forms, Zod validation) by building a
+complete project from scratch. The German UI doubles as portfolio material
+for the Kassel job market.
 
 ## Scope
 
@@ -36,4 +35,4 @@ portfolio material for the Kassel job market.
 - Payment / checkout.
 - Real email delivery (code shown on screen in demo mode).
 - Multi-language UI (single language: German).
-- Image upload (remote URLs only, same as Tatar Kitchen reference).
+- Image upload (remote URLs only).

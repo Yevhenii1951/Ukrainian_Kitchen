@@ -1,6 +1,6 @@
 # 03: Ingredient CRUD behind auth (implements FR-7, FR-10)
 
-**What to build:** End-to-end ingredient management as in the reference: a
+**What to build:** End-to-end ingredient management: a
 protected `/ingredients` page with a data table (name, category, unit,
 price per unit, description) plus a create/edit modal form; Zod schemas
 for create/update; server actions wired to Prisma (create/update/delete);

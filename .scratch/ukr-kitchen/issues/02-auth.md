@@ -1,6 +1,6 @@
 # 02: Auth (register, login modal, logout, protected layout) (implements FR-3, FR-4, FR-5, FR-6, FR-9)
 
-**What to build:** End-to-end Credentials auth as in the reference:
+**What to build:** End-to-end Credentials auth:
 Zod `signInSchema`; register server action (`bcryptjs` hash, unique email
 in DB); NextAuth config (`Credentials`, JWT with maxAge 1 h) with
 `api/auth/[...nextauth]/route.ts`; header shows login/registration modal
