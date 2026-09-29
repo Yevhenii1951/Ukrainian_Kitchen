@@ -90,13 +90,17 @@ npm run dev
 Der Seed (`prisma/seed.ts`) legt idempotent an:
 
 - **Zutaten** (upsert nach Name): Rote Bete, Kartoffeln, Kohl, Zwiebeln, Karotten, Knoblauch, Dill, Sauerrahm, Hühnerfleisch, Rindfleisch, Hackfleisch, Reis, Mehl, Hefeteig, Butter, Hühnereier, Hüttenkäse, Brotkrumen
-- **6 Rezepte** (mit Bild-URLs aus `public/`):
-  - `Borschtsch` (`/1borsch.jpg`)
-  - `Deruny` (`/deruni1.jpg`)
-  - `Holubtsi` (`/golubtsi1.jpg`)
-  - `Pampuschky` (`/pampushki1.jpg`)
-  - `Varenyky mit Hüttenkäse` (`/vareniki1.jpg`)
-  - `Kotelett nach Kiew` (`/kotleta_po_Kievski1.jpg`)
+- **6 Rezepte** (ohne Bild-URL; die Karte zeigt den Platzhalter „Kein Bild"):
+  - `Borschtsch`
+  - `Deruny`
+  - `Holubtsi`
+  - `Pampuschky`
+  - `Varenyky mit Hüttenkäse`
+  - `Kotelett nach Kiew`
+
+> Die Rezeptfotos wurden am 2026-09-29 entfernt, weil für keinen der
+> Dateinamen eine Herkunft oder Lizenz hinterlegt war. Bis neue Fotos mit
+> dokumentierter Herkunft vorliegen, bleibt `imageUrl` im Seed `null`.
 
 ---
 
@@ -128,8 +132,8 @@ prisma/
 ├── migrations/               # Migrationen (inkl. createdAt/updatedAt)
 └── seed.ts                   # Seed-Skript
 public/
-├── 1borsch.jpg, pampushki1.jpg, deruni1.jpg, ...  # Rezeptbilder
-└── hero_...                  # Hero-Bilder
+├── hero_ukrainian-*.jpg, logo.png  # Hero- und Logo-Dateien
+└── (Rezeptbilder entfernt, siehe oben)
 ```
 
 > Detaillierte Architektur und Spezifikation siehe `docs/sdd/` (lokal, nicht im Git-Repo für den öffentlichen Teil).

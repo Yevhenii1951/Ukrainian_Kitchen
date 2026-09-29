@@ -34,7 +34,7 @@ const ingredients: IngredientSeed[] = [
 type RecipeSeed = {
   name: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string | null;
   ingredients: { slot: string; quantity: number }[];
 };
 
@@ -43,7 +43,6 @@ const recipes: RecipeSeed[] = [
     name: "Borschtsch",
     description:
       "Die ikonische Rote-Bete-Suppe mit Rindfleisch, Kartoffeln und Kohl. Serviert mit einem Klecks Sauerrahm und frischem Dill – das Herzstück der ukrainischen Küche.",
-    imageUrl: "/1borsch.jpg",
     ingredients: [
       { slot: "Rote Bete", quantity: 2 },
       { slot: "Kartoffeln", quantity: 0.5 },
@@ -60,7 +59,6 @@ const recipes: RecipeSeed[] = [
     name: "Deruny",
     description:
       "Knusprige Kartoffelpuffer, goldbraun gebraten und mit Sauerrahm serviert. Ein einfaches Gericht mit unvergesslichem Geschmack.",
-    imageUrl: "/deruni1.jpg",
     ingredients: [
       { slot: "Kartoffeln", quantity: 1 },
       { slot: "Zwiebeln", quantity: 0.1 },
@@ -73,7 +71,6 @@ const recipes: RecipeSeed[] = [
     name: "Holubtsi",
     description:
       "Weinkrautblätter gefüllt mit Reis und Hackfleisch, gedünstet in Tomatensauce. Ein festliches Hauptgericht für die ganze Familie.",
-    imageUrl: "/golubtsi1.jpg",
     ingredients: [
       { slot: "Kohl", quantity: 1 },
       { slot: "Reis", quantity: 250 },
@@ -85,7 +82,6 @@ const recipes: RecipeSeed[] = [
     name: "Pampuschky",
     description:
       "Lockere, gebackene Hefebrötchen, reichlich mit Knoblauchbutter und frischem Dill beträufelt – die Seele des Borschtsch-Erlebnisses.",
-    imageUrl: "/pampushki1.jpg",
     ingredients: [
       { slot: "Hefeteig", quantity: 1 },
       { slot: "Knoblauch", quantity: 3 },
@@ -97,7 +93,6 @@ const recipes: RecipeSeed[] = [
     name: "Varenyky mit Hüttenkäse",
     description:
       "Zarte Teigtaschen mit süßem Hüttenkäse, gekocht und mit Butter und Sauerrahm serviert – der Geschmack der Kindheit.",
-    imageUrl: "/vareniki1.jpg",
     ingredients: [
       { slot: "Mehl", quantity: 0.5 },
       { slot: "Hühnereier", quantity: 2 },
@@ -110,7 +105,6 @@ const recipes: RecipeSeed[] = [
     name: "Kotelett nach Kiew",
     description:
       "Paniertes Hühnerbrötchen mit geschmolzener Butter im Inneren. Ein Klassiker der ukrainischen Gastronomie und weltweit geliebt.",
-    imageUrl: "/kotleta_po_Kievski1.jpg",
     ingredients: [
       { slot: "Hühnerfleisch", quantity: 0.8 },
       { slot: "Butter", quantity: 150 },
