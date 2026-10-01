@@ -1,7 +1,5 @@
 # Borschtsch & Pampuschky 🇺🇦
 
-![Borschtsch & Pampuschky – Startseite](public/Screenshot%20from%202026-09-16%2020-49-38.png)
-
 > Eine Web-App für Rezepte der ukrainischen Küche. Gebaut als Fullstack-Lernprojekt: Server Actions, Middleware, Client-State, Auth, Prisma, Supabase und Cloud-Deployment.
 
 ---
@@ -175,4 +173,30 @@ npx prisma generate
 
 ## Lizenz
 
-Dieses Projekt ist ein Lernprojekt und steht unter der MIT-Lizenz.
+Der Quellcode steht unter der MIT-Lizenz, siehe `LICENSE`. Die MIT-Lizenz gilt
+für den Code — **nicht** für fremde Bilder oder Videos.
+
+### Bild- und Medienbestand
+
+| Datei | Herkunft | Status |
+| --- | --- | --- |
+| `public/logo.png` | eigene Arbeit | geklärt |
+
+Am 2026-10-01 wurden fünf Mediendateien aus dem Bestand entfernt, weil für
+keine davon eine Herkunft oder Lizenz hinterlegt war:
+
+- zwei 1920×1280-Stockfotos,
+- ein Foto einer erkennbaren Person (kein Model Release vorhanden),
+- ein Byte-Duplikat des Logos,
+- ein Video mit einer für kostenpflichtige Stockbibliotheken typischen
+  Dateibenennung.
+
+Keine dieser Dateien war im Code referenziert. Ihre Entfernung ändert das
+Seitenbild also nicht.
+
+Bilder mit erkennbaren Personen brauchen neben der Lizenz eine ausdrückliche
+Erlaubnis der abgebildeten Person. Eine Lizenz der Bildagentur deckt das nicht
+ab.
+
+Neue Bilder und Videos kommen erst wieder mit dokumentierter Herkunft in den
+Bestand. Für die Rezepte bleibt `imageUrl` im Seed `null`.
