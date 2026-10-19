@@ -19,13 +19,13 @@ const ingredients: IngredientSeed[] = [
   { name: "Knoblauch", category: "VEGETABLES", unit: "PIECES", pricePerUnit: 0.4, description: "Aromatisch, wichtig für Pampuschky" },
   { name: "Dill", category: "SPICES", unit: "GRAMS", pricePerUnit: 1.5, description: "Frisch und unverzichtbar" },
   { name: "Sauerrahm", category: "DAIRY", unit: "GRAMS", pricePerUnit: 2.0, description: "Wird zu Borschtsch serviert" },
-  { name: "Hühnerfleisch", category: "MEAT", unit: "KILOGRAMS", pricePerUnit: 8.5, description: "Für Kotelett nach Kiew und Borschtsch" },
+  { name: "Hühnerfleisch", category: "MEAT", unit: "KILOGRAMS", pricePerUnit: 8.5, description: "Für Kotelett nach KIEW und Borschtsch" },
   { name: "Rindfleisch", category: "MEAT", unit: "KILOGRAMS", pricePerUnit: 12.0, description: "Reichhaltige Fleischbrühe" },
   { name: "Hackfleisch", category: "MEAT", unit: "KILOGRAMS", pricePerUnit: 9.0, description: "Für Holubtsi" },
   { name: "Reis", category: "OTHER", unit: "GRAMS", pricePerUnit: 2.0, description: "Füllung für Holubtsi" },
   { name: "Mehl", category: "OTHER", unit: "KILOGRAMS", pricePerUnit: 1.0, description: "Für Teig" },
   { name: "Hefeteig", category: "OTHER", unit: "PIECES", pricePerUnit: 2.5, description: "Für Pampuschky" },
-  { name: "Butter", category: "DAIRY", unit: "GRAMS", pricePerUnit: 3.0, description: "Geschmolzene Butter in Kotelett nach Kiew" },
+  { name: "Butter", category: "DAIRY", unit: "GRAMS", pricePerUnit: 3.0, description: "Geschmolzene Butter in Kotelett nach KIEW" },
   { name: "Hühnereier", category: "OTHER", unit: "PIECES", pricePerUnit: 0.35, description: "Für Teig und Panade" },
   { name: "Hüttenkäse", category: "DAIRY", unit: "GRAMS", pricePerUnit: 3.5, description: "Für Varenyky" },
   { name: "Brotkrumen", category: "OTHER", unit: "GRAMS", pricePerUnit: 1.0, description: "Für Panade" }
@@ -34,7 +34,7 @@ const ingredients: IngredientSeed[] = [
 type RecipeSeed = {
   name: string;
   description: string;
-  imageUrl?: string | null;
+  imageUrl: string;  // <-- added, points to public/WebP
   ingredients: { slot: string; quantity: number }[];
 };
 
@@ -43,6 +43,7 @@ const recipes: RecipeSeed[] = [
     name: "Borschtsch",
     description:
       "Die ikonische Rote-Bete-Suppe mit Rindfleisch, Kartoffeln und Kohl. Serviert mit einem Klecks Sauerrahm und frischem Dill – das Herzstück der ukrainischen Küche.",
+    imageUrl: "/borsch.webp",  // <-- added
     ingredients: [
       { slot: "Rote Bete", quantity: 2 },
       { slot: "Kartoffeln", quantity: 0.5 },
@@ -59,6 +60,7 @@ const recipes: RecipeSeed[] = [
     name: "Deruny",
     description:
       "Knusprige Kartoffelpuffer, goldbraun gebraten und mit Sauerrahm serviert. Ein einfaches Gericht mit unvergesslichem Geschmack.",
+    imageUrl: "/deruni.webp",  // <-- added
     ingredients: [
       { slot: "Kartoffeln", quantity: 1 },
       { slot: "Zwiebeln", quantity: 0.1 },
@@ -71,6 +73,7 @@ const recipes: RecipeSeed[] = [
     name: "Holubtsi",
     description:
       "Weinkrautblätter gefüllt mit Reis und Hackfleisch, gedünstet in Tomatensauce. Ein festliches Hauptgericht für die ganze Familie.",
+    imageUrl: "/golubtsi.webp",  // <-- added
     ingredients: [
       { slot: "Kohl", quantity: 1 },
       { slot: "Reis", quantity: 250 },
@@ -82,6 +85,7 @@ const recipes: RecipeSeed[] = [
     name: "Pampuschky",
     description:
       "Lockere, gebackene Hefebrötchen, reichlich mit Knoblauchbutter und frischem Dill beträufelt – die Seele des Borschtsch-Erlebnisses.",
+    imageUrl: "/pampuchki.webp",  // <-- added
     ingredients: [
       { slot: "Hefeteig", quantity: 1 },
       { slot: "Knoblauch", quantity: 3 },
@@ -93,6 +97,7 @@ const recipes: RecipeSeed[] = [
     name: "Varenyky mit Hüttenkäse",
     description:
       "Zarte Teigtaschen mit süßem Hüttenkäse, gekocht und mit Butter und Sauerrahm serviert – der Geschmack der Kindheit.",
+    imageUrl: "/vareniki.webp",  // <-- added
     ingredients: [
       { slot: "Mehl", quantity: 0.5 },
       { slot: "Hühnereier", quantity: 2 },
@@ -105,6 +110,7 @@ const recipes: RecipeSeed[] = [
     name: "Kotelett nach Kiew",
     description:
       "Paniertes Hühnerbrötchen mit geschmolzener Butter im Inneren. Ein Klassiker der ukrainischen Gastronomie und weltweit geliebt.",
+    imageUrl: "/kotleta po kievski.webp",  // <-- added
     ingredients: [
       { slot: "Hühnerfleisch", quantity: 0.8 },
       { slot: "Butter", quantity: 150 },
@@ -153,7 +159,7 @@ async function main() {
           id: `seed-${recipe.name}`,
           name: recipe.name,
           description: recipe.description,
-          imageUrl: recipe.imageUrl,
+          imageUrl: recipe.imageUrl,  // <-- added
           ingredients: {
             create: recipe.ingredients.map(({ slot, quantity }) => ({
               quantity,
@@ -165,6 +171,14 @@ async function main() {
       console.log(`+ Rezept angelegt: ${recipe.name}`);
     } else {
       console.log(`= Rezept existiert schon: ${recipe.name}`);
+      // Update imageUrl if it changed
+      if (exists.imageUrl !== recipe.imageUrl) {
+        await prisma.recipe.update({
+          where: { id: `seed-${recipe.name}` },
+          data: { imageUrl: recipe.imageUrl }
+        });
+        console.log(`* imageUrl aktualisiert: ${recipe.name}`);
+      }
     }
   }
 
