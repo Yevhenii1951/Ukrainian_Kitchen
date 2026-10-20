@@ -24,6 +24,10 @@ export async function GET() {
       data: { imageUrl: "/vareniki.webp" },
     });
     await prisma.recipe.updateMany({
+      where: { name: "Kotelett nach Kiew" },
+      data: { imageUrl: "/kotleta po kievski.webp" },
+    });
+    await prisma.recipe.updateMany({
       where: { name: "Kotelett nach KIEW" },
       data: { imageUrl: "/kotleta po kievski.webp" },
     });
