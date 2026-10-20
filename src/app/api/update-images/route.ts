@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/utils/prisma";
 
 export async function GET() {
   try {
@@ -27,8 +27,10 @@ export async function GET() {
       where: { name: "Kotelett nach KIEW" },
       data: { imageUrl: "/kotleta po kievski.webp" },
     });
-    return NextResponse.json({ ok: true });
-  } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 });
+    const recipes = await prisma.recipe.findMany();
+    return NextResponse.json({ ok: true, recipes: recipes.map(r => ({name: r.name, imageUrl: r.imageUrl})) });
+  } catch (e) {
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
