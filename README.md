@@ -1,6 +1,28 @@
-# Borschtsch & Pampuschky 🇺🇦
+<div align="center">
+
+# Borschtsch & Pampuschky
+
+**Rezepte der ukrainischen Küche verwalten, entdecken und Schritt für Schritt lernen.**
+
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
+![Prisma](https://img.shields.io/badge/Prisma-6-2D3748?logo=prisma)
+
+</div>
+
+---
+
+## Überblick
 
 > Eine Web-App für Rezepte der ukrainischen Küche. Gebaut als Fullstack-Lernprojekt: Server Actions, Middleware, Client-State, Auth, Prisma, Supabase und Cloud-Deployment.
+
+## Der Ablauf
+
+```
+Nutzer meldet sich an -> durchsucht Rezepte -> öffnet Zutaten und Zubereitung
+       -> berechnet Inhalte über Zutatenverwaltung -> erstellt oder bearbeitet Rezepte
+```
 
 ---
 
